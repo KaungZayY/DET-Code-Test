@@ -29,7 +29,6 @@ class AuthController extends Controller
         }
     }
 
-    // try catch for better security
     public function register(RegisterRequest $request)
     {
         try {
@@ -43,7 +42,7 @@ class AuthController extends Controller
             }
 
             $token = auth()->login($user);
-            return $this->responseWithToken($token);
+            return $this->responseWithToken($token, 201);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
@@ -57,11 +56,16 @@ class AuthController extends Controller
     {
         try {
             $user = auth()->user();
-
+            if (!$user) {
+                return response()->json([
+                    'status' => 'failed',
+                    'message' => 'Unauthorized access!',
+                ], 401);
+            }
             return response()->json([
                 'status' => 'success',
                 'user' => $user,
-            ]);
+            ], 200);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
@@ -79,7 +83,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'Successfully logged out'
-            ]);
+            ], 200);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
@@ -92,7 +96,7 @@ class AuthController extends Controller
     public function refresh()
     {
         try {
-            return $this->responseWithToken(auth()->refresh());
+            return $this->responseWithToken(auth()->refresh(),200);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
@@ -102,13 +106,13 @@ class AuthController extends Controller
         }
     }
 
-    protected function responseWithToken($token)
+    protected function responseWithToken($token, $status = 200)
     {
         return response()->json([
             'status' => 'success',
             'access_token' => $token,
             'type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-        ]);
+        ],$status);
     }
 }
