@@ -20,6 +20,7 @@ Route::prefix('v1')->group(function () {
 
         Route::get('items', [v1ItemController::class, 'index']);
         Route::post('items', [v1ItemController::class, 'store']);
+        Route::get('items/{item}', [v1ItemController::class, 'show']);
         Route::post('items/{item}', [v1ItemController::class, 'update']);
         Route::delete('items/{item}', [v1ItemController::class, 'destroy']);
     });

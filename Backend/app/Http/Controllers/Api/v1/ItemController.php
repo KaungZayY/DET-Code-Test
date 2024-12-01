@@ -71,6 +71,28 @@ class ItemController extends Controller
     }
 
     /**
+     * get item by id
+     * Header: Bearer Token
+     * GET /api/v1/items/:id
+     */
+    public function show($id)
+    {
+        try {
+            $item = Item::findOrFail($id);
+            return response()->json([
+                'status' => 'success',
+                'user' => $item,
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+                'message' => 'Item Not Found!',
+                'status' => 404,
+            ],404);
+        }
+    }
+
+    /**
      * update existing item
      * Header: Bearer Token
      * POST /api/v1/items/:id

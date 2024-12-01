@@ -9,6 +9,11 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
+    /**
+     * login
+     * POST /api/v1/login
+     * @param email,password
+     */
     public function login(LoginRequest $request)
     {
         try {
@@ -29,6 +34,11 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * register
+     * POST /api/v1/register
+     * @param name,email,password
+     */
     public function register(RegisterRequest $request)
     {
         try {
@@ -52,6 +62,11 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * user profile
+     * Header: Bearer Token
+     * GET /api/v1/profile
+     */
     public function profile()
     {
         try {
@@ -75,6 +90,11 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * user logout
+     * Header: Bearer Token
+     * POST /api/v1/logout
+     */
     public function logout()
     {
         try {
@@ -93,6 +113,11 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * token refresh
+     * Header: Bearer Token
+     * GET /api/v1/refresh
+     */
     public function refresh()
     {
         try {
