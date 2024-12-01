@@ -34,127 +34,49 @@
                     </ul>
                 </div>
             </div>
-        </nav>        
+        </nav>
         <!-- nav bar -->
 
-        <!-- Search & Filter-->
-        <div class="max-w-7xl mx-auto mt-4 mb-4 p-4 text-gray-900 bg-gray-100 dark:text-white dark:bg-gray-800 rounded-lg shadow-md">
-            <form method="GET" class="flex flex-wrap items-center gap-4">
-                <!-- Category Filter -->
-                <div class="w-full sm:w-auto">
-                    <label for="category_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Category
-                    </label>
-                    <select name="category_id" id="category_id"
-                        class="px-4 py-2 block w-full sm:w-40 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                        <option value="">Category</option>
-                        <option value="1">Category 1</option>
-                        <option value="2">Category 2</option>
-                        <option value="3">Category 3</option>
-                    </select>
-                </div>
-        
-                <!-- Title Filter -->
-                <div class="w-full sm:w-auto">
-                    <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Title
-                    </label>
-                    <input type="text" name="title" id="title" placeholder="Title"
-                        class="px-4 py-2 block w-full sm:w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                </div>
-        
-                <!-- From Date Filter -->
-                <div class="w-full sm:w-auto">
-                    <label for="from_date" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        From Date
-                    </label>
-                    <input type="date" name="from_date" id="from_date"
-                        class="px-4 py-2 block w-full sm:w-40 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                </div>
-        
-                <!-- To Date Filter -->
-                <div class="w-full sm:w-auto">
-                    <label for="to_date" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        To Date
-                    </label>
-                    <input type="date" name="to_date" id="to_date"
-                        class="px-4 py-2 block w-full sm:w-40 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                </div>
-        
-                <!-- Search Button -->
-                <div class="w-full sm:w-auto">
-                    <button type="submit"
-                        class="w-full mt-5 sm:w-auto bg-indigo-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 dark:focus:ring-offset-gray-800 dark:bg-indigo-500 dark:hover:bg-indigo-600">
-                        Search
-                    </button>
-                </div>
-            </form>
-        </div>
 
-
-        <!-- Items -->
-        <h1 class="text-black dark:text-white text-2xl text-center pt-2">Items</h1>
-        <!-- Add New Item BUtton -->
-        <div class="flex flex-row justify-end">
-            <a href="#"
-                class="items-center mr-2 px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 dark:bg-green-500 hover:bg-green-700 dark:hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                Add Item
-            </a>
-        </div>
-        <div class="flex flex-col md:flex-row flex-wrap pt-2 pb-8">
-            <!-- Item Card -->
-            <div
-                class="w-full h-auto relative sm:w-1/2 md:w-1/3 lg:w-1/4 flex flex-col px-2 py-2 text-black transition duration-300 ease-in-out transform hover:scale-105">
-                <div
-                    class="rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 px-4 py-4 shadow-lg">
-                    <div class="flex flex-row justify-between items-center mt-2">
-                        <a href="#" class="text-lg font-medium text-blue-600 dark:text-blue-400 hover:underline">
-                            Mobile Phone
-                        </a>
-                        <button class="focus:outline-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="4" viewBox="0 0 128 512"
-                                class="fill-gray-500 dark:fill-gray-400">
-                                <path
-                                    d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- Buttons (Edit/Delete) -->
-                    <div class="flex flex-col absolute inset-0 z-20 right-6 top-14 items-end">
-                        <form action="#" method="GET">
-                            <button
-                                class="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 mb-1 rounded-md w-20 shadow-md transition ease-in-out duration-150">
-                                Edit
-                            </button>
-                        </form>
-                        <form action="#" method="GET">
-                            <button
-                                class="bg-red-500 hover:bg-red-700 text-white px-3 py-1 mb-1 rounded-md w-20 shadow-md transition ease-in-out duration-150">
-                                Delete
-                            </button>
-                        </form>
-                    </div>
-                    <!-- Description -->
-                    <p class="text-sm text-gray-700 dark:text-gray-400 mt-4 h-20 overflow-auto">
-                        This is a sample description text for the product. It provides a brief overview of the item's
-                        details.
-                    </p>
-                    <!-- Metadata -->
-                    <p class="text-xs text-gray-600 dark:text-gray-500 mt-3">
-                        <span class="font-medium">Created At:</span> 2024-10-1
-                    </p>
-                    <p class="text-xs text-gray-600 dark:text-gray-500 mt-1 mb-1">
-                        <span class="font-medium">Category:</span> Electric Device
-                    </p>
-                </div>
+        <!-- Create Item -->
+        <form class="min-w-80 mx-auto pt-8">
+            <h1 class="text-black dark:text-white text-2xl text-center mb-4">Create Item</h1>
+            <div class="relative z-0 w-full mb-8 group">
+                <input type="text" name="title" id="title"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="title"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    Title</label>
             </div>
-            <!-- Item Card -->
-
-        </div>
-        <!-- Items -->
+            <div class="relative z-0 w-full mb-8 group text-black dark:text-white">
+                <select name="category" id="category"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-500 dark:text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    required>
+                    <option value="" disabled selected hidden></option>
+                    <option value="Marketing" class="text-gray-900 dark:text-gray-500">Marketing</option>
+                    <option value="Sales" class="text-gray-900 dark:text-gray-500">Sales</option>
+                    <option value="Development" class="text-gray-900 dark:text-gray-500">Development</option>
+                    <option value="Support" class="text-gray-900 dark:text-gray-500">Support</option>
+                </select>
+                <label for="category"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    Category</label>
+            </div>
+            <div class="relative z-0 w-full mb-8 group">
+                <textarea type="text" name="description" id="description" rows="3"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "></textarea>
+                <label for="description"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    Description</label>
+            </div>
+            <button type="submit"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+        </form>
+        <!-- Create Item -->
 
     </div>
-
 
     <!-- Footer -->
     <footer class="bg-white dark:bg-gray-900">
