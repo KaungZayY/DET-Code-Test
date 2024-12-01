@@ -13,6 +13,11 @@ import { RouterLink } from 'vue-router';
                             class="block py-2 px-3 text-gray-900 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-gray-200 md:dark:text-blue-400 dark:bg-transparent"
                             aria-current="page">Sign Up</RouterLink>
                     </li>
+                    <li>
+                        <RouterLink to="login"
+                            class="block py-2 px-3 text-gray-900 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-gray-200 md:dark:text-blue-400 dark:bg-transparent"
+                            aria-current="page">Login</RouterLink>
+                    </li>
                 </ul>
             </div>
         </div>
