@@ -26,7 +26,7 @@ const handleLogin = async () => {
 
     try {
         const response = await axios.post(`api/login`, credentials);
-        VueCookies.set('access_token', response.data.access_token, {
+        VueCookies.set('token', response.data.access_token, {
             expires: response.data.expires_in / 60 / 24,
             secure: true,
             sameSite: 'Strict',

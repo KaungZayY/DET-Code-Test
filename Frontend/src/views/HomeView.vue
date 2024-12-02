@@ -1,7 +1,13 @@
-<script scoped>
+<script setup>
+import Footer from '@/components/Footer.vue'
+import Wrapper from '@/components/Wrapper.vue';
+import AuthNavBar from '@/components/AuthNavBar.vue';
 
 </script>
 
 <template>
-    <p class="text-2xl text-red-500">Hello World</p>
+    <Wrapper>
+        <AuthNavBar />
+    </Wrapper>
+    <Footer />
 </template>
