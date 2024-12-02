@@ -7,10 +7,18 @@ import VueCookies from 'vue-cookies';
 const toast = useToast();
 
 const handleLogout = async () => {
-    await axios.post(`api/logout`);
-    VueCookies.remove('token');
-    toast.success('Logout Success!');
-    router.push('/login');
+    try {
+        await axios.post(`api/logout`);
+        VueCookies.remove('token');
+        toast.success('Logout Success!');
+    } catch (error) {
+        if (error.response && error.response.status === 401) {
+            toast.error('Login First!');
+        };
+    } finally {
+        router.push('/login');
+    }
+    
 };
 </script>
 
