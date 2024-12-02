@@ -18,7 +18,7 @@ class ItemController extends Controller
     public function index()
     {
         try {
-            $items = Item::filter(request(['category_id', 'title', 'from_date', 'to_date']))->paginate(5);
+            $items = Item::filter(request(['category_id', 'title', 'from_date', 'to_date']))->with('category')->get();
             return response()->json([
                 'status' => 'success',
                 'items' => $items,
