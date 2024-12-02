@@ -30,20 +30,9 @@ const handleFilter = async () => {
 }
 
 onMounted(async () => {
-    try {
-        const response = await axios.get('/api/categories');
-        state.categories = response.data.categories;
-    }
-    catch (error) {
-        if (error.response && error.response.status === 401) {
-            toast.error('Login First!');
-            router.push('/login');
-        };
-        // console.error('Error fetching data', error);
-    }
-    finally {
-        state.isLoading = false;
-    }
+    const response = await axios.get('/api/categories');
+    state.categories = response.data.categories;
+    state.isLoading = false;
 })
 </script>
 
