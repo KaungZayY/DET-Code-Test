@@ -81,7 +81,7 @@ class ItemController extends Controller
             $item = Item::findOrFail($id);
             return response()->json([
                 'status' => 'success',
-                'user' => $item,
+                'item' => $item,
             ], 200);
         } catch (\Exception $e) {
             return response()->json([

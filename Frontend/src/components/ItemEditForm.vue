@@ -1,18 +1,22 @@
 <script setup>
-import { reactive, onMounted } from 'vue';
-import axios from 'axios';
+import { defineProps, reactive, onMounted } from "vue";
 import { useToast } from 'vue-toastification';
+import axios from 'axios';
 import router from '@/router';
 
-const state = reactive({
-    categories: [],
-    isLoading: true
+const props = defineProps({
+    item: Object,
 });
 
 const form = reactive({
     title: '',
     category_id: '',
     description: '',
+});
+
+const state = reactive({
+    categories: [],
+    isLoading: true
 });
 
 const errors = reactive({
@@ -23,25 +27,19 @@ const errors = reactive({
 
 const toast = useToast();
 
-onMounted(async () => {
-    const response = await axios.get('/api/categories');
-    state.categories = response.data.categories;
-    state.isLoading = false;
-});
-
-const handleCreate = async () => {
-    const newItem = {
+const handleUpdate = async () => {
+    const updatedItem = {
         title: form.title,
         category_id: form.category_id,
         description: form.description,
     };
 
     try {
-        await axios.post(`/api/items`, newItem);
-        toast.success('Item Created!');
-        router.push('/');
+        await axios.post(`/api/items/${props.item.id}`, updatedItem);
+        toast.success('Item Updated Successfully');
+        router.push(`/`);
     } catch (error) {
-        if (error.response.status === 422) {
+        if (error.response && error.response.status === 422) {
             Object.keys(errors).forEach((key) => {
                 errors[key] = '';
             });
@@ -53,21 +51,31 @@ const handleCreate = async () => {
                 }
             }
         } 
-        else if(error.response.status === 401){
+        else if(error.response && error.response.status === 401){
             toast.error('Login First!');
             router.push('/login');
         }
         else {
-            toast.error('An error occurred while creating an item. Please try again later.');
-            console.error('Error While Creating an Item:', error);
+            toast.error('An error occurred while Updating an Item. Please try again later.');
+            console.error('Error While Update:', error);
         }
     }
 };
+
+onMounted(async () => {
+    const response = await axios.get('/api/categories');
+    state.categories = response.data.categories;
+    state.isLoading = false;
+
+    form.title = props.item.title;
+    form.category_id = props.item.category_id;
+    form.description = props.item.description;
+});
 </script>
 
 <template>
-    <form @submit.prevent="handleCreate" class="min-w-80 mx-auto pt-8">
-        <h1 class="text-black dark:text-white text-2xl text-center mb-4">Create Item</h1>
+    <form @submit.prevent="handleUpdate" class="min-w-80 mx-auto pt-8">
+        <h1 class="text-black dark:text-white text-2xl text-center mb-4">Update Item</h1>
         <div class="relative z-0 w-full mb-8 group">
             <input v-model="form.title" type="text" name="title" id="title"
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -98,9 +106,9 @@ const handleCreate = async () => {
             <label for="description"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                 Description</label>
-                <div v-if="errors.description" class="text-red-500 text-sm mt-2">{{ errors.description[0] }}</div>
+            <div v-if="errors.description" class="text-red-500 text-sm mt-2">{{ errors.description[0] }}</div>
         </div>
         <button type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update</button>
     </form>
 </template>

@@ -2,6 +2,7 @@
 import { defineProps, reactive } from "vue";
 import { useToast } from 'vue-toastification';
 import axios from 'axios';
+import { RouterLink } from 'vue-router';
 
 const props = defineProps({
     item: Object,
@@ -60,12 +61,10 @@ const formatDate = (dateString) => {
             </div>
             <!-- Buttons (Edit/Delete) -->
             <div v-if="menu.isOpen" class="flex flex-col absolute inset-0 z-20 right-6 top-14 items-end">
-                <form action="#" method="GET">
-                    <button
-                        class="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 mb-1 rounded-md w-20 shadow-md transition ease-in-out duration-150">
-                        Edit
-                    </button>
-                </form>
+                <RouterLink :to="`/item/edit/${item.id}`"
+                    class="bg-blue-500 hover:bg-blue-700 text-center text-white px-3 py-1 mb-1 rounded-md w-20 shadow-md transition ease-in-out duration-150">
+                    Edit
+                </RouterLink>
                 <button @click="deleteItem"
                     class="bg-red-500 hover:bg-red-700 text-white px-3 py-1 mb-1 rounded-md w-20 shadow-md transition ease-in-out duration-150">
                     Delete

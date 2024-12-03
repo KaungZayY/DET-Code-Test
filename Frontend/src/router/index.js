@@ -5,6 +5,7 @@ import LoginView from '@/views/LoginView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import CreateItemView from '@/views/CreateItemView.vue'
+import EditItemView from '@/views/EditItemView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,9 +31,14 @@ const router = createRouter({
       component: ProfileView,
     },
     {
-      path: '/item-create',
-      name: 'item-create',
+      path: '/item/create',
+      name: 'create-item',
       component: CreateItemView,
+    },
+    {
+      path: '/item/edit/:id',
+      name: 'edit-item',
+      component: EditItemView,
     },
     {
         path: '/:catchAll(.*)',
