@@ -76,7 +76,7 @@ const formatDate = (dateString) => {
             </p>
             <!-- Metadata -->
             <p class="text-xs text-gray-600 dark:text-gray-500 mt-3">
-                <span class="font-medium">Created at:</span> {{ formatDate(item.created_at) }}
+                <span class="font-medium">Created at:</span> {{ formatDate(item.created_date) }}
             </p>
             <p class="text-xs text-gray-600 dark:text-gray-500 mt-1 mb-1">
                 <span class="font-medium">Category:</span> {{ item.category.category }}
