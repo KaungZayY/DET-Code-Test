@@ -82,6 +82,10 @@ const remoteAllFilterValues = () => {
     dropListFilter.category = '';
 };
 
+const handleDelete = (itemId) => {
+    state.items = state.items.filter(item => item.id !== itemId);
+};
+
 onMounted(async () => {
     try {
         const response = await axios.get('/api/items');
@@ -121,7 +125,7 @@ onMounted(async () => {
             <PulseLoader />
         </div>
         <div v-else class="flex flex-col md:flex-row flex-wrap pt-2 pb-8">
-            <ItemCard v-for="item in filteredItems" :key="item.id" :item="item" />
+            <ItemCard v-for="item in filteredItems" :key="item.id" :item="item" @delete_item="handleDelete"/>
         </div>
     </Wrapper>
     <Footer />

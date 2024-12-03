@@ -1,10 +1,29 @@
 <script setup>
 import { defineProps, reactive } from "vue";
-import { RouterLink } from 'vue-router';
+import { useToast } from 'vue-toastification';
+import axios from 'axios';
 
 const props = defineProps({
     item: Object,
 });
+
+const toast = useToast();
+
+const emit = defineEmits(['delete_item']);
+
+const deleteItem = async () => {
+  try {
+    const confirm = window.confirm('Are you sure you want to delete this item?');
+    if (confirm) {
+      await axios.delete(`/api/items/${props.item.id}`);
+      toast.success('Item has Successfully Removed!');
+      emit('delete_item', props.item.id);
+    }
+  } catch (error) {
+    console.error('Error deleting item', error);
+    toast.error('Item cannot be Removed');
+  }
+}
 
 const menu = reactive({
     isOpen: false,
@@ -47,12 +66,10 @@ const formatDate = (dateString) => {
                         Edit
                     </button>
                 </form>
-                <form action="#" method="GET">
-                    <button
-                        class="bg-red-500 hover:bg-red-700 text-white px-3 py-1 mb-1 rounded-md w-20 shadow-md transition ease-in-out duration-150">
-                        Delete
-                    </button>
-                </form>
+                <button @click="deleteItem"
+                    class="bg-red-500 hover:bg-red-700 text-white px-3 py-1 mb-1 rounded-md w-20 shadow-md transition ease-in-out duration-150">
+                    Delete
+                </button>
             </div>
             <!-- Description -->
             <p class="text-sm text-gray-700 dark:text-gray-400 mt-4 h-20 overflow-auto">
